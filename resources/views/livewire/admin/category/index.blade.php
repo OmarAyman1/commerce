@@ -27,14 +27,16 @@
                             <td>{{ $category->name}}</td>
                             <td>{{ $category->status == '1'? 'Hidden':'Visible'}}</td>
                             <td>
-                                <a href="" class="btn btn-success">Edit</a>
-                                <a href="" class="btn btn-danger">Delete</a>
+                                <a href="{{ url('admin/category/'.$category->id.'/edit')}}" class="btn btn-success">Edit</a>
+                                <a href="{{ url('admin/category/'.$category->id.'/delete')}}" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+                <div>
                 {{$categories->links()}}
+                </div>
             </div>
         </div>
     </div>
