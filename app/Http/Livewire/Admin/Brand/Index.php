@@ -5,10 +5,14 @@ namespace App\Http\Livewire\Admin\Brand;
 use App\Models\Brand;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
 
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+    public $name, $slug, $status;
     public function rules(){
         return[
             'name' => 'required|string',
@@ -23,7 +27,7 @@ class Index extends Component
         $this->status = null;
     }
 
-    public $name, $slug, $status;
+
     public function storeBrand(){
         $validatedData = $this->validate();
         Brand::create([
@@ -39,7 +43,8 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.admin.brand.index')
+        $brands = Brand::orderBY('id', 'Desc')->paginate(10);
+        return view('livewire.admin.brand.index', ['brands' => $brands])
                     ->extends('layouts.admin')
                     ->section('content');
     }
