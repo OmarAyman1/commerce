@@ -34,6 +34,6 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
         Route::Put('/category/{category}', 'update');
     });
 
-
+    //Route::get('/brands' , );
 
 });
