@@ -25,6 +25,7 @@ class Index extends Component
         $this->name = null;
         $this->slug = null;
         $this->status = null;
+        $this->brand_id = null;
     }
 
 
@@ -69,6 +70,17 @@ class Index extends Component
         $this->resetInput();
     }
 
+    public function deleteBrand(int $brand_id){
+        $this->brand_id = $brand_id;
+    }
+
+    public function destroyBrand(){
+
+        Brand::findOrFail($this->brand_id)->delete();
+        session()->flash('message', 'Brand Deleted successfuly');
+        $this->dispatchBrowserEvent('close-modal');
+        $this->resetInput();
+    }
     public function render()
     {
         $brands = Brand::orderBY('id', 'Desc')->paginate(10);
