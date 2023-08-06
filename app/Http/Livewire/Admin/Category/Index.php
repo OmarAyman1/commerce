@@ -12,10 +12,11 @@ class Index extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-
     public $category_id;
+
     public function deleteCategory($category_id){
-        $this->$category_id = $category_id;
+
+        $this->category_id = $category_id;
     }
 
     public function destroyCategory(){

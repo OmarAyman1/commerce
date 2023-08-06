@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
-    public function Index()
+    public function index()
     {
         return view('admin.category.index');
     }
@@ -47,7 +47,7 @@ class CategoryController extends Controller
         $category->status = $request->status == true ? '1':'0';
 
         $category->save();
-        return Redirect('admin/category')->with('message', 'category added');
+        return redirect('admin/category')->with('message', 'category added');
     }
 
 
@@ -56,19 +56,20 @@ class CategoryController extends Controller
     }
 
     public function update(CategoryFormRequest $request, $category){
-        $category = Category::findOrFail($category);
+
 
         $validatedData = $request->validated();
-        $category = new Category;
+        $category = Category::findOrFail($category);
+        //$category = new Category;
         $category->name = $validatedData['name'];
         $category->slug = Str::slug($validatedData['slug']);
         $category->description = $validatedData['description'];
 
         if($request->hasFile('image')){
 
-            $path = 'uploads/category'.$category->image;
-            if(File::exists()){
-                File::delete();
+            $path = 'uploads/category/'.$category->image;
+            if(File::exists($path)){
+                File::delete($path);
             }
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
@@ -87,6 +88,6 @@ class CategoryController extends Controller
         $category->status = $request->status == true ? '1':'0';
 
         $category->update();
-        return Redirect('admin/category')->with('message', 'category updated');
+        return redirect('admin/category')->with('message', 'category updated');
     }
 }

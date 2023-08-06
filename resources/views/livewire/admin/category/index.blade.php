@@ -70,7 +70,7 @@
 
 @push('script')
 <script>
-    window.addeventListener('close-modal', event=>{
+    window.addEventListener('close-modal', event=>{
         $('#deleteModal').modal('hide');
     })
 </script>

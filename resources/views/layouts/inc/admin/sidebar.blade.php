@@ -59,11 +59,51 @@
               </ul>
             </div>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="documentation/documentation.html">
               <i class="mdi mdi-file-document-box-outline menu-icon"></i>
               <span class="menu-title">Documentation</span>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('admin/brands')}}">
+              <i class="mdi mdi-file-document-box-outline menu-icon"></i>
+              <span class="menu-title">Brands</span>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#cat" aria-expanded="false" aria-controls="cat">
+              <i class="mdi mdi-account menu-icon"></i>
+              <span class="menu-title">Categories</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="cat">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{url('admin/category/create')}}"> Add Categories </a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{url('admin/category')}}"> View Categories </a></li>
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#prod" aria-expanded="false" aria-controls="prodd">
+              <i class="mdi mdi-account menu-icon"></i>
+              <span class="menu-title">Products</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="prod">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{url('admin/Products/create')}}"> Add Product </a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{url('admin/Products')}}"> View Products </a></li>
+              </ul>
+            </div>
+          </li>
+
+
         </ul>
       </nav>

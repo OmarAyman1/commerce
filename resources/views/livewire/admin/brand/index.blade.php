@@ -54,11 +54,11 @@
 
 @push('script')
 <script>
-    window.addeventListener('close-modal', event=>{
+    window.addEventListener('close-modal', event=>{
         $('#addBrandModal').modal('hide');
         $('#updateBrandModal').modal('hide');
         $('#deleteBrandModal').modal('hide');
-    })
+    });
 </script>
 @endpush
 
