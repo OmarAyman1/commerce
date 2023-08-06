@@ -30,7 +30,7 @@
                                     <td>{{ $brand->slug}}</td>
                                     <td>{{ $brand->stauts == '1' ? 'hidden':'visible'}}</td>
                                     <td>
-                                        <a href="" class="btn btn-sm btn-success">Edit</a>
+                                        <a href="" wire:click="editBrand({{$brand->id}})" data-bs-toggle="modal" data-bs-target="#updateBrandModal" class="btn btn-sm btn-success">Edit</a>
                                         <a href="" class="btn btn-sm btn-danger">Delete</a>
                                     </td>
                                 </tr>
@@ -56,6 +56,7 @@
 <script>
     window.addeventListener('close-modal', event=>{
         $('#addBrandModal').modal('hide');
+        $('#updateBrandModal').modal('hide');
     })
 </script>
 @endpush
