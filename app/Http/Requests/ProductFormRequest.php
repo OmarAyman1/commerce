@@ -26,7 +26,7 @@ class ProductFormRequest extends FormRequest
         return [
             'category_id' => [
                 'required',
-                'integar'
+                'integer'
             ],
             'name' => [
                 'required',
@@ -52,15 +52,15 @@ class ProductFormRequest extends FormRequest
             ],
             'original_price' => [
                 'required',
-                'integar'
+                'integer'
             ],
             'selling_price' => [
                 'required',
-                'integar'
+                'integer'
             ],
             'quantity' => [
                 'required',
-                'integar'
+                'integer'
             ],
             'trending' => [
                 'nullable'

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
-use app\Http\Requests\ProductFormRequest;
+use App\Http\Requests\ProductFormRequest;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Support\Facades\File;
@@ -33,7 +33,7 @@ class ProductController extends Controller
 
     public function update(ProductFormRequest $request, int $product_id){
         $validatedData = $request->validated();
-        $product = Category::findOrFail($validatedData[category_id])
+        $product = Category::findOrFail($validatedData['category_id'])
                     ->products()->where('id', $product_id)->first();
 
         if($product){
@@ -79,7 +79,7 @@ class ProductController extends Controller
         $validatedData = $request->validated();
 
         $category = Category::findOrFail($validatedData['category_id']);
-        $product = $category->products()-create([
+        $product = $category->products()->create([
             'category_id'=> $validatedData['category_id'],
             'name'=> $validatedData['name'],
             'slug'=> Str::slug($validatedData['slug']),

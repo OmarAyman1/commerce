@@ -73,6 +73,12 @@
               <span class="menu-title">Brands</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('admin/colors')}}">
+              <i class="mdi mdi-file-document-box-outline menu-icon"></i>
+              <span class="menu-title">Colors</span>
+            </a>
+          </li>
 
 
           <li class="nav-item">
