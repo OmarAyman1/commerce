@@ -6,13 +6,15 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use app\Http\Requests\ProductFormRequest;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
     public function index(){
-        return view('admin.products.index');
+        $products = Product::all();
+        return view('admin.products.index', compact('products'));
     }
 
     public function create(){
