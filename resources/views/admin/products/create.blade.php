@@ -12,6 +12,13 @@
                 </h3>
             </div>
             <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert alert-warning">
+                        @foreach ($errors->all() as $error)
+                            <div>{{$error}}</div>
+                        @endforeach
+                    </div>
+                @endif
                 <form action="{{url('admin/products')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -37,7 +44,7 @@
                       </li>
                 </ul>
                   <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                    <div class="tab-pane fade border p-3 show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                         <div class="mb-3">
                             <label>Category</label>
                             <select name="category_id" id="form-control">
@@ -71,7 +78,7 @@
                             <textarea name="description" class="form-control" rows="4"></textarea>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="seotag-tab-pane" role="tabpanel" aria-labelledby="seotag-tab" tabindex="0">
+                    <div class="tab-pane fade border p-3" id="seotag-tab-pane" role="tabpanel" aria-labelledby="seotag-tab" tabindex="0">
                         <div class="mb-3">
                             <label>{meta title</label>
                                 <input type="text" name="meta_title" clas="form-control"/>
@@ -85,7 +92,7 @@
                             <textarea name="meta_keyword" class="form-control" rows="4"></textarea>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab" tabindex="0">
+                    <div class="tab-pane fade border p-3" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab" tabindex="0">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3">
@@ -111,10 +118,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="images-tab-pane" role="tabpanel" aria-labelledby="images-tab" tabindex="0">
+                    <div class="tab-pane fade border p-3" id="image-tab-pane" role="tabpanel" aria-labelledby="image-tab" tabindex="0">
                         <div class="mb-3">
                             <label>upload product images</label>
-                            <input type="file" name="image" multiple class="form-control">
+                            <input type="file" name="image[]" multiple class="form-control">
                         </div>
                     </div>
                   </div>

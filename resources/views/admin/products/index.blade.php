@@ -4,7 +4,10 @@
 
 
 <div class="row">
-    <div class="col-md-12 grid-margin">
+    <div class="col-md-12 ">
+        @if (Session('message'))
+            <div class="alert alert-success">{{session('message')}}</div>
+        @endif
         <div class="card">
             <div class="card-header">
                 <h3>Products
