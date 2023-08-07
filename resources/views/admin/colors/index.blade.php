@@ -34,7 +34,7 @@
                                 <td>{{$color->code}}</td>
                                 <td>{{$color->status ? 'Hidden':'Visible'}}</td>
                                 <td>
-                                    <a href="{{url('admin/color'.$color->id.'/edit')}}" class="btn btn-primary btn-sm">edit</a>
+                                    <a href="{{url('admin/colors/'.$color->id.'/edit')}}" class="btn btn-primary btn-sm">edit</a>
                                     <a href="{{url('')}}" class="btn btn-danger btn-sm">delete</a>
                                 </td>
                             </tr>
