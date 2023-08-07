@@ -43,7 +43,7 @@
                                 <td>{{$product->quantity}}</td>
                                 <td>{{$product->status=='1'?'Hidden': 'Visible'}}</td>
                                 <td>
-                                    <a href="" class="btn btn-sm btn-success">Edit</a>
+                                    <a href="{{url('admin/products/'.$product->id.'/edit')}}" class="btn btn-sm btn-success">Edit</a>
                                     <a href="" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>
