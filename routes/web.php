@@ -28,8 +28,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
         Route::get('sliders', 'index');
         Route::get('sliders/create', 'create');
         Route::post('sliders', 'store');
-        Route::get('products/{product}/edit', 'edit');
-        Route::put('products/{product}', 'update');
+        Route::get('sliders/{slider}/edit', 'edit');
+        Route::put('sliders/{slider}', 'update');
         Route::get('products/{product}/delete', 'destroy');
         Route::get('product-image/{product_image_id}/delete', 'destroyImage');
 
