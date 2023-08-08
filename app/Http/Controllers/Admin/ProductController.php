@@ -75,6 +75,15 @@ class ProductController extends Controller
                     ]);
                 }
             }
+            if($request->colors){
+                foreach($request->colors as $key=> $color){
+                    $product->productColors()->create([
+                        'product_id' => $product->id,
+                        'color_id'=> $color,
+                        'quantity' => $request->colorquantity[$key] ?? 0
+                    ]);
+                }
+            }
 
             return redirect('/admin/products')->with('message', 'product updated succesfully');
         }else{
@@ -165,4 +174,11 @@ class ProductController extends Controller
 
         return response()->json(['message'=>'quantity updated']);
     }
+
+    public function deleteProductColor( $prod_color_id){
+        $prodColor = ProductColor::findOrFail($prod_color_id);
+        $prodColor->delete();
+        return response()->json(['message'=>'product color deleted']);
+    }
+
 }

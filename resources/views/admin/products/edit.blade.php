@@ -251,7 +251,23 @@
                     url: "/admin/product-color/"+prod_color_id,
                     data: data,
                     success: function (response) {
-                        alert(response.message)
+                        alert(response.message);
+                    }
+                });
+            });
+
+            $(document).on('click','.deleteProductColorBtn' function () {
+
+                var prod_color_id = $(this).val();
+                var thisClick = $(this);
+
+                $.ajax({
+                    type: "GET",
+                    url: "/admin/product-color/"+prod_color_id+"/delete",
+                    data: data,
+                    success: function (response) {
+                        thisClick.closest('.prod-color-tr').remove();
+                        alert(response.message);
                     }
                 });
             });
