@@ -28,15 +28,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($sliders as $color)
+                        @foreach ($sliders as $slider)
                             <tr>
-                                <td>{{$color->id}}</td>
-                                <td>{{$color->name}}</td>
-                                <td>{{$color->code}}</td>
-                                <td>{{$color->status ? 'Hidden':'Visible'}}</td>
+                                <td>{{$slider->id}}</td>
+                                <td>{{$slider->title}}</td>
+                                <td>{{$slider->description}}</td>
                                 <td>
-                                    <a href="{{url('admin/sliders/'.$color->id.'/edit')}}" class="btn btn-primary btn-sm">edit</a>
-                                    <a href="{{url('admin/sliders/'.$color->id.'/delete')}}" onclick="return confirm('delete?')" class="btn btn-danger btn-sm">delete</a>
+                                    <img src="{{ asset("$slider->image")}}" style="width:70px; height:70px" alt="Slider">
+                                </td>
+                                <td>{{$slider->status =='0'? 'Visible':'Hidden'}}</td>
+                                <td>
+                                    <a href="{{url('admin/sliders/'.$slider->id.'/edit')}}" class="btn btn-primary btn-sm">edit</a>
+                                    <a href="{{url('admin/sliders/'.$slider->id.'/delete')}}" onclick="return confirm('delete?')" class="btn btn-danger btn-sm">delete</a>
                                 </td>
                             </tr>
                         @endforeach

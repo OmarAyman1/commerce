@@ -10,7 +10,8 @@ use App\Http\Requests\SliderFormRequest;
 class SliderController extends Controller
 {
     public function index(){
-        return view('admin.slider.index');
+        $sliders = Slider::all();
+        return view('admin.slider.index', compact('sliders'));
     }
 
     public function create(){
