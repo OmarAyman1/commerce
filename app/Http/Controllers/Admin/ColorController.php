@@ -36,4 +36,11 @@ class ColorController extends Controller
         Color::find($color_id)->update($validatedData);
         return redirect('admin/colors')->with('message', 'color updated');
     }
+
+    public function destroy($color_id)
+    {
+        $color = Color::findOrFail($color_id);
+        $color->delete();
+        return redirect('admin/colors')->with('message', 'color deleted');
+    }
 }
