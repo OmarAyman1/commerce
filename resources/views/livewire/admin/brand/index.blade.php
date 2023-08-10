@@ -16,6 +16,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Category</th>
                                 <th>Name</th>
                                 <th>Slug</th>
                                 <th>Status</th>
@@ -26,6 +27,13 @@
                             @forelse ($brands as $brand)
                                 <tr>
                                     <td>{{ $brand->id}}</td>
+                                    <td>
+                                        @if ($brand->category)
+                                            {{$brand->category->name}}
+                                        @else
+                                            No category
+                                        @endif
+                                    </td>
                                     <td>{{ $brand->name}}</td>
                                     <td>{{ $brand->slug}}</td>
                                     <td>{{ $brand->stauts == '1' ? 'hidden':'visible'}}</td>
