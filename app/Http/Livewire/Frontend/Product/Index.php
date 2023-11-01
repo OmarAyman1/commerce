@@ -8,10 +8,11 @@ use Livewire\Component;
 class Index extends Component
 {
 
-    public $products, $category, $brandInputs = [];
+    public $products, $category, $brandInputs = [], $priceInput;
 
     protected $queryString = [
         'brandInputs' =>['except'=>'', 'as'=>'brand'],
+        'priceInput' =>['except'=>'', 'as'=>'price'],
     ];
 
     public function mount( $category){
@@ -23,6 +24,13 @@ class Index extends Component
         $this->products = Product::where('category_id', $this->category->id)
         ->when($this->brandInputs, function($q){
             $q->whereIn('brand', $this->brandInputs);
+        })
+        ->when($this->priceInput, function($q){
+            $q->when($this->priceInput == "high-to-low", function($q2){
+                    $q2->orderBy('selling_price','desc');
+                })->when($this->priceInput == "low-to-high", function($q2){
+                    $q2->orderBy('selling_price','asc');
+                });
         })
         ->where('status', '0')->get();
 
