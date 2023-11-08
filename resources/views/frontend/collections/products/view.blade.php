@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<dd>{{$product}}</dd>
 @section('title')
 {{$product->meta_title}}
 @endsection
