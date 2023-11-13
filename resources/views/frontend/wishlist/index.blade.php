@@ -4,5 +4,6 @@
 
 @section('content')
 
+<livewire:frontend.wishlist-show/>
 
 @endsection
