@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class View extends Component
 {
-    public $category, $product, $prodColorSelectedQuantity, $quantityCount=1;
+    public $category, $product, $prodColorSelectedQuantity, $quantityCount=1, $productColorId;
 
     public function addToWishlist($productId)
     {
@@ -55,7 +55,75 @@ class View extends Component
     public function incrementQuantity(){
         $this->quantityCount++;
     }
+
+    public function addToCart(int $productId){
+        if(Auth::check()){
+            if($this->product->where('id', $productId)->where('status', '0')->exists()){
+                if($this->product->productColors->count() > 1){
+                    if($this->prodColorSelectedQuantity != null){
+                        $productColor = $this->product->productColors()->where('id', $this->productColorId)->first();
+                        if($productColor->quantity >0){
+                            if($productColor->quantity > $this->quantityCount){
+                                ///
+                            }else{
+                                $this->dispatchBrowserEvent('message', [
+                                    'text' => 'only'.$this->productColor->quantity.'available',
+                                    'type' => 'warning',
+                                    'status' => 404
+                                ]);
+                            }
+                        }else{
+                            $this->dispatchBrowserEvent('message', [
+                                'text' => 'color out of stock',
+                                'type' => 'warning',
+                                'status' => 404
+                            ]);
+                        }
+                    }
+                    else{
+                        $this->dispatchBrowserEvent('message', [
+                            'text' => 'select color',
+                            'type' => 'warning',
+                            'status' => 404
+                        ]);
+                    }
+                }else{
+                    if($this->product->quantity>0){
+                        if($this->product->quantity > $this->quantityCount){
+                            ///
+                        }else{
+                            $this->dispatchBrowserEvent('message', [
+                                'text' => 'only'.$this->product->quantity.'available',
+                                'type' => 'warning',
+                                'status' => 404
+                            ]);
+                        }
+                    }else{
+                        $this->dispatchBrowserEvent('message', [
+                            'text' => 'out of stock',
+                            'type' => 'warning',
+                            'status' => 404
+                        ]);
+                    }
+                }
+            }else{
+                $this->dispatchBrowserEvent('message', [
+                    'text' => 'product does not exist',
+                    'type' => 'warning',
+                    'status' => 404
+                ]);
+            }
+        }
+        else{
+            $this->dispatchBrowserEvent('message', [
+                'text' => 'please login',
+                'type' => 'info',
+                'status' => 401
+            ]);
+        }
+    }
     public function colorSelected($productColorId){
+        $this->productColorId = $productColorId;
         $productColor = $this->product->productColors()->where('id', $productColorId)->first();
         $this->prodColorSelectedQuantity = $productColor->quantity;
 
