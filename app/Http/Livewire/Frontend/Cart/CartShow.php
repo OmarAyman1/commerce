@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class CartShow extends Component
 {
 
-    public $cart;
+    public $cart, $totalPrice =0;
 
     public function incrementQuantity(int $cartId){
         $cartData = Cart::where('id', $cartId)->where('user_id', auth()->user()->id)->first();
