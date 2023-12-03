@@ -9,10 +9,22 @@ use Illuminate\Support\Carbon;
 
 class OrderController extends Controller
 {
-    public function index(){
-        $currentDate = Carbon::now();
+    public function index(Request $request){
+        // $currentDate = Carbon::now();
+        // $orders = Order::whereDate('created_at', $currentDate)->paginate(10);
 
-        $orders = Order::whereDate('created_at', $currentDate)->paginate(10);
+        $currentDate = Carbon::now();
+        $orders = Order::when($request->date != null , function ($query) use ($request){
+                            return $query->whereDate("created_at", $request->date);
+                        }, function ($query) use ($currentDate) {
+                            return $query->whereDate('created_at', $currentDate);
+                        })
+                        ->when($request->status != null , function ($query) use ($request){
+                            return $query->where("status_message", $request->status);
+                        })
+                        ->paginate(10);
+
+
         return view('admin.orders.index', compact('orders'));
     }
 
