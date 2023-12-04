@@ -17,6 +17,10 @@ class FrontendController extends Controller
         return view('frontend.index', compact('sliders', 'trendingProducts'));
     }
 
+    public function newArrival(){
+        $newProducts = Product::latest()->take(15)->get();
+        return view('frontend.pages.new-arrival', compact('newProducts'));
+    }
     public function categories(){
         $categories = Category::where('status', '0')->get();
         return view('frontend.collections.category.index', compact('categories'));
@@ -49,4 +53,6 @@ class FrontendController extends Controller
     public function thankyou(){
         return view('frontend.thank_you');
     }
+
+
 }
