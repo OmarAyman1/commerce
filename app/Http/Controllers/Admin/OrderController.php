@@ -36,4 +36,16 @@ class OrderController extends Controller
             return redirect('admin/orders')->with('message','order not fpund');
         }
     }
+
+    public function updateOrderStatus(int $orderId, Request $request){
+        $order = Order::where('id', $orderId)->first();
+        if($order){
+            $order->update([
+                'status_message'=> $request->order_status,
+            ]);
+            return redirect('admin/orders/'.$orderId)->with('message','order status updated');
+        }else{
+            return redirect('admin/orders/'.$orderId)->with('message','order not fpund');
+        }
+    }
 }
