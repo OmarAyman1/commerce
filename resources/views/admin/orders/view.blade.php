@@ -18,6 +18,8 @@
                    <h4 class="text-primary">
                         <i class="fa fa-shopping-cart"></i>my order details
                         <a href="{{ url('admin/orders')}}" class="btn btn-danger btn-sm float-end">Back</a>
+                        <a href="{{ url('admin/invoice/'.$order->id.'/generate')}}" class="btn btn-primary btn-sm float-end">download invoice</a>
+                        <a href="{{ url('admin/invoice/'.$order->id)}}" target="_blank" class="btn btn-warning btn-sm float-end">view invoice</a>
                    </h4>
                    <hr>
                    <div class="row">
