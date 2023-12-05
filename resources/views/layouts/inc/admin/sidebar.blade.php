@@ -80,6 +80,13 @@
           </li>
 
           <li class="nav-item">
+            <a class="nav-link" href="{{url('admin/settings')}}">
+              <i class="mdi mdi-view-carousel menu-icon"></i>
+              <span class="menu-title">Settings</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link" href="{{url('admin/brands')}}">
               <i class="mdi mdi-file-document-box-outline menu-icon"></i>
               <span class="menu-title">Brands</span>

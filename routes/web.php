@@ -42,6 +42,7 @@ Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->grou
 });
 
 
+
 Route::middleware(['auth'])->group(function () {
     Route::get('wishlist', [App\Http\Controllers\Frontend\WishlistController::class, 'index']);
     Route::get('cart', [App\Http\Controllers\Frontend\CartController::class,'index']);
@@ -55,6 +56,9 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
+
+    Route::get('settings', [App\Http\Controllers\Admin\SettingController::class,'index']);
+    Route::post('settings', [App\Http\Controllers\Admin\SettingController::class,'store']);
 
     Route::controller(App\Http\Controllers\Admin\SliderController::class)->group(function () {
         Route::get('sliders', 'index');
