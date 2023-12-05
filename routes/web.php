@@ -60,6 +60,15 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('settings', [App\Http\Controllers\Admin\SettingController::class,'index']);
     Route::post('settings', [App\Http\Controllers\Admin\SettingController::class,'store']);
 
+    Route::controller(App\Http\Controllers\Admin\UserController::class)->group(function(){
+        Route::get('/users', 'index');
+        Route::get('/users/create', 'create');
+        Route::post('/users', 'store');
+        Route::get('/users/{user_id}/edit', 'edit');
+        Route::get('users/{user_id}', 'update');
+        Route::get('/users/{user_id}/delete', 'destroy');
+    });
+
     Route::controller(App\Http\Controllers\Admin\SliderController::class)->group(function () {
         Route::get('sliders', 'index');
         Route::get('sliders/create', 'create');
