@@ -39,6 +39,8 @@ Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->grou
     Route::get('thank_you', 'thankyou');
 
     Route::get('/new-arrivals', 'newArrival');
+
+    Route::get('search','searchProducts');
 });
 
 
