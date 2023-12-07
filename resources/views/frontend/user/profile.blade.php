@@ -8,7 +8,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <h4>profile</h4>
+                <h4>profile
+                    <a href="{{url('change-password')}}" class="btn btn-warning">Change password?</a>
+                </h4>
                 <div class="underline mb-4"></div>
             </div>
 
